@@ -4,15 +4,13 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "exercicio_log") // Boa prática nomear a tabela em minúsculo no Postgres
+@Table(name = "exercicio_log")
 public class ExercicioLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // columnDefinition="TEXT" é vital no Postgres para strings muito longas
-    // (se o feedback passar de 255 chars)
     @Column(columnDefinition = "TEXT")
     private String fraseOriginal;
 
@@ -26,7 +24,6 @@ public class ExercicioLog {
 
     private LocalDateTime dataHora = LocalDateTime.now();
 
-    // Getters e Setters (Obrigatórios para o JPA funcionar)
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getFraseOriginal() { return fraseOriginal; }

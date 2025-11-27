@@ -22,10 +22,8 @@ public class TutorService {
     @Value("${gemini.api-key}")
     private String apiKey;
 
-    // URL do Modelo
     private final String URL_GOOGLE = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
-    // --- LISTA DE TEMAS PARA VARIAR AS FRASES ---
     private final List<String> TEMAS = Arrays.asList(
             "Viagens e Aeroporto",
             "Culinária e Restaurantes",
@@ -71,11 +69,8 @@ public class TutorService {
     }
 
     public String gerarDesafio() {
-        // 1. Sorteia um tema aleatório da lista
         String temaSorteado = TEMAS.get(new Random().nextInt(TEMAS.size()));
 
-        // 2. Monta o prompt pedindo algo específico sobre esse tema
-        // Adicionei "Não repita frases clichês" para forçar criatividade
         String prompt = String.format(
                 "Gere uma frase em Inglês (nível A2 - Básico/Intermediário) sobre o tema: '%s'. " +
                         "A frase deve ser útil para conversação no dia a dia. " +

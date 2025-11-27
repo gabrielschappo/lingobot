@@ -19,7 +19,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        // Gera um novo desafio ao carregar a página
         String desafio = tutorService.gerarDesafio();
         model.addAttribute("fraseIngles", desafio);
         return "index";
@@ -37,8 +36,6 @@ public class HomeController {
 
     @GetMapping("/historico")
     public String historico(Model model) {
-        // Lista todos os exercícios feitos (via repositório injetado ou service)
-        // Implementação simples deixada como exercício
         return "index";
     }
 }
